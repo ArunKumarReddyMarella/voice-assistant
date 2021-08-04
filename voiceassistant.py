@@ -149,56 +149,56 @@ def voice_assistant(data):
     if "what is your name" in data:
         listening=True
         respond("My name is jarvis")
-    if "how are you" in data:
+    elif "how are you" in data:
         listening=True
         respond("I am good {},thank you".format(name))
-    if "features" in data:
+    elif "features" in data:
         listening=True
         respond("jokes\ncoronavirus details\nthe top news from google\nplay songs\nsend message in whatssapp\nsend mail\nsearching in google and wikipedia\nopening web cam\nwhether details of a place\ntimer\nthe top 10 movies according to imdb\nstopclock feature\nfinding location\ncurrent time\n")
-    if "current time" in data:
+    elif "current time" in data:
         listening=True
         respond(ctime())
-    if "joke" in data:
+    elif "joke" in data:
         listening=True
         joke()
-    if "youtube" in data.casefold():
+    elif "youtube" in data.casefold():
         listening=True
         youtube(data)
-    if "news" in data:
+    elif "news" in data:
         listening=True
         news()
-    if "timer" in data:
+    elif "timer" in data:
         listening=True
         timer()
-    if "movie" in data:
+    elif "movies" or "movie" in data:
         listening=True
         movies()
-    if "cam" in data:
+    elif "cam" in data:
         listening=True
         webcam()
-    if "stop clock" in data:
+    elif "stop clock" in data:
         listening=True
         stopclock()
-    if "open google" in data.casefold():
+    elif "open google" in data.casefold():
         listening=True
         respond("what you want to search")
         sear=listen()
         url='http://google.com/search?q='+sear
         respond("here is what I found for {}".format(sear))
         webbrowser.get().open(url)
-    if "find location" in data:
+    elif "find location" in data:
         listening=True
         respond("what is the location")
         location=listen()
         url='http://google.ml/maps/place/'+location+'/&amp;'
         respond("here is the location of {}".format(location))
         webbrowser.get().open(url)
-    if "weather" in data:
+    elif "weather" in data:
         listening=True
         weather()
-    if "mail" in data:
+    elif "mail" in data:
         listening=True
-        respond("whom should i send email to?")
+        respond("whom should I send email to?")
         to=listen()
         edict={'first person':'arunkumarreddy159@gmail.com','second person':'arunkumarreddy159@gmail.com','third person':'arunkumarreddy159@gmail.com'}
         toadd=edict[to]
@@ -214,7 +214,7 @@ def voice_assistant(data):
         mail.sendmail('qwertyforwork@gmail.com',toadd,content)
         mail.close()
         respond('Email Sent')
-    if "wiki" in data.casefold():
+    elif "wiki" in data.casefold():
         listening=True
         respond("what should I search?")
         query=listen()
@@ -225,16 +225,16 @@ def voice_assistant(data):
             intro=[i.text for i in paragraphs]
             halo=''.join(intro)
         respond(halo[:600])
-    if "whatsapp" in data.casefold():
+    elif "whatsapp" in data.casefold():
         listening=True
         whatsapp()
-    if "song" in data:
+    elif "song" in data:
         listening=True
         song()
-    if "coronavirus" in data:
+    elif "coronavirus" in data:
         listening=True
         coviddetail()
-    if 'thank you' in data:
+    elif 'thank you' in data:
         listening=False
         print("Listening stopped")
         respond("See you {}".format(name))
